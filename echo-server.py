@@ -3,13 +3,12 @@
 import socket
 
 HOST = "127.0.0.1"  # Standard loopback interface address (localhost)
-PORT = 65432  # Port to listen on (non-privileged ports are > 1023)
+PORT = 65431  # Port to listen on (non-privileged ports are > 1023)
 
 def decode_request(request_bytes):
     request = request_bytes.decode()
-    parts = request.split()
-    operation = parts[0]
-    args = parts[1:]
+    operation = request.split()[0]
+    args = request.split()[1:]
     return operation, args
 
 def process_request(operation, args):
